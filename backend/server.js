@@ -22,7 +22,7 @@ dotenv.config();
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: process.env.FRONTEND_URL || '*', // Allow frontend URL in production, or all in dev
+    origin: true, // Allow any origin (fixes Vercel's multiple domain issues)
     credentials: true
 }));
 
