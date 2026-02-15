@@ -1,28 +1,20 @@
 import axios from 'axios';
 
-// Hardcode the backend URL as a failsafe if env var is missing
-let baseUrl = import.meta.env.VITE_API_BASE_URL || 'https://xpression-backend.onrender.com';
+// Hardcoded URLs to prevent environment variable issues
+const PRODUCTION_URL = 'https://xpression-backend.onrender.com/api';
+const LOCAL_URL = 'http://localhost:5000/api';
 
-// Ensure no trailing slash
-if (baseUrl.endsWith('/')) {
-    baseUrl = baseUrl.slice(0, -1);
-}
+// Determine URL based on hostname
+const baseURL = window.location.hostname === 'localhost' ? LOCAL_URL : PRODUCTION_URL;
 
-// Append /api if not present
-if (!baseUrl.endsWith('/api')) {
-    baseUrl += '/api';
-}
-
-console.log('Final Configured API URL:', baseUrl);
+console.log('CRITICAL: Forcing API URL to:', baseURL);
 
 const api = axios.create({
-    baseURL: baseUrl,
+    baseURL: baseURL,
     headers: {
         'Content-Type': 'application/json',
     },
 });
-
-console.log('API Base URL:', api.defaults.baseURL); // Debug log
 
 // Add a request interceptor to include token
 api.interceptors.request.use(
