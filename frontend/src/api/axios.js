@@ -9,6 +9,8 @@ const api = axios.create({
     },
 });
 
+console.log('API Base URL:', api.defaults.baseURL); // Debug log
+
 // Add a request interceptor to include token
 api.interceptors.request.use(
     (config) => {
