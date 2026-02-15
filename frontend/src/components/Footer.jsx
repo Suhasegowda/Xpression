@@ -1,3 +1,6 @@
+import React from 'react';
+import { Facebook, Twitter, Instagram, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import api from '../api/axios';
 
 const Footer = () => {
