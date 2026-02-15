@@ -33,9 +33,21 @@ app.use((req, res, next) => {
 });
 
 // Connect to Database
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log("MongoDB Connected"))
-    .catch(err => console.log(err));
+// Connect to Database
+const connectDB = async () => {
+    try {
+        if (!process.env.MONGO_URI) {
+            throw new Error('MONGO_URI is missing in environment variables!');
+        }
+        console.log(`Connecting to MongoDB at: ${process.env.MONGO_URI.substring(0, 20)}...`);
+        const conn = await mongoose.connect(process.env.MONGO_URI);
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+        console.error(`Error: ${error.message}`);
+        // Do not exit process, just log it so the server keeps running (avail for logs)
+    }
+};
+connectDB();
 
 // Routes
 app.use('/api/auth', authRoutes);
