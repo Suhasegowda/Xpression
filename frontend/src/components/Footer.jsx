@@ -33,6 +33,9 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} Xpression Mens Wear. All Rights Reserved.</p>
+          <p style={{ fontSize: '0.7em', opacity: 0.5, marginTop: '5px' }}>
+            Debug: API connected to {import.meta.env.VITE_API_BASE_URL || 'Hardcoded Fallback'}
+          </p>
         </div>
       </div>
 
