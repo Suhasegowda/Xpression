@@ -1,9 +1,22 @@
 import axios from 'axios';
 
+// Hardcode the backend URL as a failsafe if env var is missing
+let baseUrl = import.meta.env.VITE_API_BASE_URL || 'https://xpression-backend.onrender.com';
+
+// Ensure no trailing slash
+if (baseUrl.endsWith('/')) {
+    baseUrl = baseUrl.slice(0, -1);
+}
+
+// Append /api if not present
+if (!baseUrl.endsWith('/api')) {
+    baseUrl += '/api';
+}
+
+console.log('Final Configured API URL:', baseUrl);
+
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL?.endsWith('/api')
-        ? import.meta.env.VITE_API_BASE_URL
-        : `${import.meta.env.VITE_API_BASE_URL}/api`,
+    baseURL: baseUrl,
     headers: {
         'Content-Type': 'application/json',
     },
