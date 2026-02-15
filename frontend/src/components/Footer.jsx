@@ -35,9 +35,6 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} Xpression Mens Wear. All Rights Reserved.</p>
-          <p style={{ fontSize: '0.7em', opacity: 0.5, marginTop: '5px' }}>
-            Debug: Actual Axios URL: {api.defaults.baseURL}
-          </p>
         </div>
       </div>
 
