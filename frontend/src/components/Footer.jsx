@@ -1,11 +1,10 @@
-import React from 'react';
-import { Facebook, Twitter, Instagram, Phone } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import api from '../api/axios';
 
 const Footer = () => {
   return (
     <footer className="footer-section">
       <div className="container footer-container">
+        {/* ... content ... */}
         <div className="footer-content">
           <div className="footer-links-column">
             <h3>Customer Service</h3>
@@ -23,7 +22,7 @@ const Footer = () => {
             <p>Redefining Men's Fashion</p>
 
             <div className="social-links">
-              <a href="#" aria-label="WhatsApp"><Phone size={20} /></a> {/* Using Phone as WhatsApp placeholder icon */}
+              <a href="#" aria-label="WhatsApp"><Phone size={20} /></a>
               <a href="#" aria-label="Instagram"><Instagram size={20} /></a>
               <a href="#" aria-label="Facebook"><Facebook size={20} /></a>
               <a href="#" aria-label="Twitter"><Twitter size={20} /></a>
@@ -34,12 +33,13 @@ const Footer = () => {
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} Xpression Mens Wear. All Rights Reserved.</p>
           <p style={{ fontSize: '0.7em', opacity: 0.5, marginTop: '5px' }}>
-            Debug: API connected to {import.meta.env.VITE_API_BASE_URL || 'Hardcoded Fallback'}
+            Debug: Actual Axios URL: {api.defaults.baseURL}
           </p>
         </div>
       </div>
 
       <style>{`
+        /* ... styles ... */
         .footer-section {
           background-color: var(--color-primary);
           color: white;
