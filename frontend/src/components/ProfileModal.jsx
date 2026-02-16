@@ -28,6 +28,10 @@ const ProfileModal = ({ onClose, onLogin }) => {
       localStorage.setItem('userInfo', JSON.stringify(data));
 
       onLogin(data.name);
+
+      // Dispatch custom event to notify Header
+      window.dispatchEvent(new Event('auth-change'));
+
       onClose();
     } catch (err) {
       setError(err.response?.data?.message || 'Authentication failed');

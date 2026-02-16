@@ -41,7 +41,11 @@ const Header = () => {
 
     checkUser();
     window.addEventListener('storage', checkUser);
-    return () => window.removeEventListener('storage', checkUser);
+    window.addEventListener('auth-change', checkUser); // Listen for custom event
+    return () => {
+      window.removeEventListener('storage', checkUser);
+      window.removeEventListener('auth-change', checkUser);
+    };
   }, []);
 
   const handleLogin = (name) => {
