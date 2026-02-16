@@ -6,13 +6,15 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
     const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
 
     if (!userInfo) {
-        console.log("ProtectedRoute: No user info found, redirecting to home");
-        return <Navigate to="/" replace />; // Redirect to home/login if not logged in
+        console.warn("ProtectedRoute: No user info found in localStorage. Redirecting to home.");
+        return <Navigate to="/" replace />;
     }
 
+    console.log("ProtectedRoute check:", { role: userInfo.role, adminOnly });
+
     if (adminOnly && userInfo.role !== 'admin') {
-        console.log(`ProtectedRoute: User role is ${userInfo.role}, required admin. Redirecting.`);
-        return <Navigate to="/" replace />; // Redirect to home if not admin
+        console.warn(`ProtectedRoute: User role is '${userInfo.role}', but required 'admin'. Redirecting to home.`);
+        return <Navigate to="/" replace />;
     }
 
     return children ? children : <Outlet />;
