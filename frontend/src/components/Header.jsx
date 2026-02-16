@@ -21,10 +21,13 @@ const Header = () => {
       if (userInfoString) {
         try {
           const user = JSON.parse(userInfoString);
+          console.log("Header User Check:", user); // DEBUG LOG
           setUsername(user.name);
           if (user.role === 'admin') {
+            console.log("User is ADMIN. Setting isAdmin = true"); // DEBUG LOG
             setIsAdmin(true);
           } else {
+            console.log("User is CUSTOMER. Setting isAdmin = false"); // DEBUG LOG
             setIsAdmin(false);
           }
         } catch (e) {
