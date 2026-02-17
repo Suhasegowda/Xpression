@@ -3,38 +3,28 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
-    return (
-        <section className="hero">
-            <div className="container hero-container">
-                <div className="hero-content">
-                    <span className="hero-subtitle animate-fade-in">New Collection 2026</span>
-                    <h1 className="hero-title animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                        Redefining <br />
-                        <span className="text-accent">Gentleman's</span> Style
-                    </h1>
-                    <p className="hero-description animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                        Discover the finest fabrics and cuts tailored for the modern man.
-                        Elevate your wardrobe with Xpression.
-                    </p>
-                    <Link to="/shop" className="btn btn-primary animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                        Shop Now <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
-                    </Link>
-                </div>
+  return (
+    <section className="hero">
+      <div className="container hero-container">
+        <div className="hero-content">
+          <span className="hero-subtitle animate-fade-in">New Collection 2026</span>
+          <h1 className="hero-title animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            Redefining <br />
+            <span className="text-accent">Gentleman's</span> Style
+          </h1>
+          <p className="hero-description animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            Discover the finest fabrics and cuts tailored for the modern man.
+            Elevate your wardrobe with Xpression.
+          </p>
+          <Link to="/shop" className="btn btn-primary animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            Shop Now <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
+          </Link>
+        </div>
 
-                <div className="hero-image-wrapper animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                    <div className="image-card">
-                        <img
-                            src="https://images.unsplash.com/photo-1617137968427-85924c809a29?q=80&w=1974&auto=format&fit=crop"
-                            alt="Male Model in Suit"
-                            className="hero-image"
-                        />
-                    </div>
-                    {/* Decorative elements */}
-                    <div className="circle-decoration"></div>
-                </div>
-            </div>
+        {/* Image and decoration removed as per request */}
+      </div>
 
-            <style>{`
+      <style>{`
         .hero {
           padding: 4rem 0;
           min-height: 85vh;
@@ -168,8 +158,8 @@ const Hero = () => {
           opacity: 0.5;
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default Hero;
